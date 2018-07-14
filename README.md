@@ -5,3 +5,10 @@ koa2和mysql形成的一个Demo.
 
 以后再回来填坑。。。
 
+--- 
+
+新增跨域访问支持
+```js
+var cors = require('koa-cors');
+app.use(cors());
+```
