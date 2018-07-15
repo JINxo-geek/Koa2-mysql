@@ -143,3 +143,25 @@ app.use(bodyParser());
 
 ---
 
+app3.js文件，新增了删除的功能。
+在接受到前端要删除的供货商编号，保存在dsupcode中。
+在sql字符串拼接的时候在``之间的是字符串模板可以用${}获取到变量的值,注意Supnumber的值应该是字符串，所以在外面加上单引号`。
+```js
+let dsupcode;
+router.post('/despur',async(ctx,netx)=>{
+  console.log('删除供货商'+ctx.request.body['Supnumber']);
+  duspcode = ctx.request.body['Supnumber'];
+  await deletesper2();
+  ctx.response.body = '删除成功';
+})
+
+async function deletesper() {
+  let sql = `DELETE FROM supplier WHERE ( Supnumber = '${duspcode}' )`;
+  console.log(sql);
+  let dataList = await query(sql);
+  return dataList
+}
+```
+
+---
+
